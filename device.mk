@@ -16,6 +16,16 @@
 
 DEVICE_PATH := $(LOCAL_PATH)
 
+# Kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/xiaomi/whyred/zImage
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES := \
+$(LOCAL_KERNEL):device/xiaomi/whyred/zImage
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
